@@ -2,7 +2,22 @@ import { test, expect } from '@playwright/test';
 
 test('upload resume', async ({ page }) => {
   await page.goto('https://www.naukri.com/nlogin/login', { waitUntil: 'networkidle' });
+  
+  console.log('Title:', await page.title());
+  console.log('URL:', page.url());
 
+  await page.screenshot({
+    path: 'headless-login.png',
+    fullPage: true,
+  });
+
+  // Check whether the login field exists
+  console.log(
+    'Username field exists:',
+    await page.locator('#usernameField').count()
+  );
+
+  
   // Fill in the login form and submit
   await page.locator('#usernameField').fill(process.env.NAUKRI_USERNAME!);
   await page.locator('#passwordField').fill(process.env.NAUKRI_PASSWORD!);
