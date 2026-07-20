@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('upload resume', async ({ page }) => {
   await page.goto('https://www.naukri.com/nlogin/login', { waitUntil: 'networkidle' });
-  
+
   // Fill in the login form and submit
   await page.locator('#usernameField').fill(process.env.NAUKRI_USERNAME!);
   await page.locator('#passwordField').fill(process.env.NAUKRI_PASSWORD!);
@@ -23,7 +23,7 @@ test('upload resume', async ({ page }) => {
   ).toBeVisible();
 
   await expect(
-      page.locator('text=Sumit_Bhatt_QA_Resume.pdf')
+      page.getByTitle('Sumit_Bhatt_QA_Resume.pdf')
   ).toBeVisible();
 
 });
