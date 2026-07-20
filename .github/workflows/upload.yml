@@ -12,17 +12,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 24
 
-      - run: npm ci
+    - run: npm ci
 
-      - run: npx playwright install --with-deps chromium
+    - name: Install Google Chrome
+      uses: browser-actions/setup-chrome@v1
 
-      - run: npx playwright test tests/upload.spec.ts
-        env:
-          NAUKRI_USERNAME: ${{ secrets.NAUKRI_USERNAME }}
-          NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Playwright tests
+      run: npx playwright test tests/upload.spec.ts
+      env:
+        NAUKRI_USERNAME: ${{ secrets.NAUKRI_USERNAME }}
+        NAUKRI_PASSWORD: ${{ secrets.NAUKRI_PASSWORD }}
