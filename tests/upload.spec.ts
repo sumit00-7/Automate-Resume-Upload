@@ -23,7 +23,7 @@ test('upload resume', async ({ page }) => {
   await page.locator('#passwordField').fill(process.env.NAUKRI_PASSWORD!);
   await page.locator("//button[normalize-space()='Login']").click();
 
-  await expect(page.getByText('Sumit Bhatt', { exact: true })).toBeVisible();
+  await expect(page.getByText('Sumit Bhatt', { exact: true })).toBeVisible({timeout: 30000});
 
   // Click on the "View profile" link
   await page.getByRole('link', { name: 'View profile' }).click();
