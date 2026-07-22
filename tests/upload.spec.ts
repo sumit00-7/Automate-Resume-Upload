@@ -20,7 +20,7 @@ test('upload resume', async ({ page }) => {
  
   // Wait for the username field to actually be visible before interacting
   const usernameField = page.locator('#usernameField');
-  await expect(usernameField).toBeVisible({ timeout: 15000 });
+  await expect(usernameField).toBeVisible({ timeout: 15000  });
  
   console.log('Username field exists:', await usernameField.count());
  
