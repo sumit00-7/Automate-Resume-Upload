@@ -27,8 +27,8 @@ test('upload resume', async ({ page }) => {
   // Fill in the login form and submit
   await usernameField.fill(username);
   await page.locator('#passwordField').fill(password);
-  await page.locator('button[type="submit"]').click();
-  
+  await page.locator('button.blue-btn').click();
+
   await page.waitForTimeout(2000); // Wait for potential redirects or page load after login
   console.log('Title 2:', await page.title());
   console.log('URL 2:', page.url());
