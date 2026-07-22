@@ -2,9 +2,8 @@ name: Upload File
 
 on:
   schedule:
-    - cron: '30 3 * * *'   # 9:00 AM IST
-    - cron: '30 7 * * *'   # 1:00 PM IST
-    - cron: '15 20 * * *'  # 1:40 AM IST (testing)
+    - cron: '15 3 * * *'   # targets 8:45 AM IST (buffer for delay, actual 9:00 AM IST)
+    - cron: '15 7 * * *'   # targets 12:45 PM IST (buffer for delay, actual 1:00 PM IST)
   workflow_dispatch:
 
 jobs:
