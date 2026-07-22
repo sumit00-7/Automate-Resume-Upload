@@ -28,6 +28,7 @@ test('upload resume', async ({ page }) => {
   await usernameField.fill(username);
   await page.locator('#passwordField').fill(password);
   await page.getByRole('button', { name: 'Login', exact: true }).click();
+  console.log('Title 2:', await page.title());
  
     /// Confirm login succeeded
   await expect(page.getByText('Sumit Bhatt', { exact: true })).toBeVisible({ timeout: 30000 });
