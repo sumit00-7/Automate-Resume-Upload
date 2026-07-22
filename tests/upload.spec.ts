@@ -30,6 +30,7 @@ test('upload resume', async ({ page }) => {
   await page.getByRole('button', { name: 'Login', exact: true }).click();
   
   await page.waitForTimeout(2000); // Wait for potential redirects or page load after login
+  console.log('Title 2:', await page.title());
   console.log('URL 2:', page.url());
  
     /// Confirm login succeeded
